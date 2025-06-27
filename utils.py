@@ -36,6 +36,25 @@ def load_model_safely(model_path):
 
 # Fungsi preprocessing (salin dari kode asli)
 def preprocess_text(text):
+    import nltk
+    try:
+        nltk.data.find('tokenizers/punkt')
+    except LookupError:
+        nltk.download('punkt', quiet=True)
+    
+    from nltk.tokenize import word_tokenize
+    from nltk.corpus import stopwords
+    from nltk.stem import WordNetLemmatizer
+    
+    # Download resource jika belum ada
+    nltk.download('stopwords', quiet=True)
+    nltk.download('wordnet', quiet=True)
+    nltk.download('omw-1.4', quiet=True)
+    
+    # Proses teks
+    stop_words = set(stopwords.words('english'))
+    lemmatizer = WordNetLemmatizer()
+
     if pd.isna(text):
         return "placeholder"
 

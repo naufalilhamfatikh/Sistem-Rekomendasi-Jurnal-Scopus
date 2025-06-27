@@ -6,6 +6,12 @@ from sklearn.metrics.pairwise import cosine_similarity
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+import nltk
+nltk.download('punkt', quiet=True)
+nltk.download('stopwords', quiet=True)
+nltk.download('wordnet', quiet=True)
+nltk.download('omw-1.4', quiet=True)
+
 # Konfigurasi halaman
 st.set_page_config(
     page_title="Sistem Rekomendasi Jurnal Scopus Bidang Computer Scince ",
